@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace WebApp.Models.Services;
 
 public interface IContactService
