@@ -1,6 +1,8 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using WebApp.Models;
 
 namespace WebApp.Models;
@@ -38,4 +40,11 @@ public class ContactModel
     
     [Display(Name = "Category")]
     public Category Category { get; set; }
+    
+    [HiddenInput] 
+    [Display(Name="Organizacja")]
+    public int OrganizationId { get; set; }
+    public OrganizationEntity? Organization { get; set; }
+    
+    [ValidateNever] public List<SelectListItem> Organizations { get; set; }
 }
