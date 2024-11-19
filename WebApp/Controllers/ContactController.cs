@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WebApp.Models;
@@ -19,7 +20,7 @@ public class ContactController : Controller
     {
         return View(_contactService.GetAll());
     }
-    
+    [Authorize(Roles = "admin")]
     //Formularz Dodawania kontaktu
     public IActionResult Add()
     {
@@ -35,6 +36,7 @@ public class ContactController : Controller
     
     //odebranie danych z formularza walidacja i dodanie kontaktu do koelkcji
     [HttpPost]
+    [Authorize(Roles = "admin")]
     public IActionResult Add(ContactModel cm)
     {
         if (!ModelState.IsValid)
